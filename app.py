@@ -29,6 +29,7 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/api/v1")
 @app.route("/api/v1/")
+@app.route("/ngdl-api/api/v1/")
 def index():
     return Response(
         json.dumps(
@@ -44,6 +45,9 @@ def index():
 @app.route(
     "/api/v1/get_url/<int:song_id>"
 )  # The main API endpoint, it returns the song's title, artist, ID and URL.
+@app.route(
+    "/ngdl-api/api/v1/get_url/<int:song_id>"
+)
 def dl(song_id: int):
     song_info = {}
     link = "https://audio.ngfiles.com"
